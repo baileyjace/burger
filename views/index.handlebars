@@ -1,0 +1,58 @@
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4">eat da burger!</h1>
+    <p class="lead">click to eat a burger, or add your own</p>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+    <h2>eat it</h2>
+    <ul>
+        {{#each burgers}} {{#unless this.devoured}}
+        <li>
+            {{this.id}}. {{this.burger_name}}
+
+            <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="false">
+                <button class="btn btn-warning" type="submit">Eat Me!</button>
+            </form>
+
+        </li>
+        {{/unless}} {{/each}}
+    </ul>
+
+</div>
+
+<div>
+    <div class="col-md-6 text-center"></div>
+    <h2>eaten</h2>
+
+    <ul>
+        {{#each burgers}} {{#if this.devoured}}
+        <li>
+            {{this.id}}. {{this.burger_name}}
+        </li>
+        {{/if}} {{/each}}
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="row">
+        <div class="col-md-12 text-center">
+<div id='add'>
+    <h2>create your own </h2>
+
+    <form class="create-update-form" action="/" method="POST">
+        <div class="form-group">
+            
+            <input type="text" id="dab" name="burger_name">
+        </div>
+        <button class="btn btn-primary" type="submit">add burger</button>
+    </form>
+</div>
+</div>
+</div>
+
